@@ -38,12 +38,12 @@ func (u *UUID) Equals(another *UUID) bool {
 }
 
 // New creates a UUID with random value.
-func New() *UUID {
+func New() UUID {
 	var uuid UUID
 	rand.Read(uuid.Bytes())
 	uuid[6] = (uuid[6] & 0x0F) | (4 << 4)
 	uuid[8] = (uuid[8] & 0x3F) | 0x80
-	return &uuid
+	return uuid
 }
 
 // ParseBytes converts a UUID in byte form to object.
